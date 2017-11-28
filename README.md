@@ -4,6 +4,16 @@ Emiestas
 Reikia įvykdyti šias komandas:
 
 ```sh
+composer install
+```
+
+arba
+
+```sh
+composer update
+```
+
+```sh
 php bin/console doctrine:database:create
 php bin/console doctrine:schema:update --force
 ```
