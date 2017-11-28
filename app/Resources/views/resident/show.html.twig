@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gyventojas</h1>
+
+    {% if app.session.flashBag.has('success') %}
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('success') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ resident.id }}</td>
+            </tr>
+            <tr>
+                <th>Gimimo metai</th>
+                <td>{{ resident.birthday }}</td>
+            </tr>
+            <tr>
+                <th>Gimimo vieta</th>
+                <td>{{ resident.birthcountry }}</td>
+            </tr>
+            <tr>
+                <th>Lytis</th>
+                <td>{{ resident.sex }}</td>
+            </tr>
+            <tr>
+                <th>Šeimos padėtis</th>
+                <td>{{ resident.maritalStatus }}</td>
+            </tr>
+            <tr>
+                <th>Vaikų skaičius</th>
+                <td>{{ resident.children }}</td>
+            </tr>
+            <tr>
+                <th>Gatvė</th>
+                <td>{{ resident.street.name }}</td>
+            </tr>
+            <tr>
+                <th>Rajonas</th>
+                <td>{{ resident.street.district }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{ form_start(delete_form) }}
+    <div class="btn-group" role="group">
+        <a class="btn btn-default" href="{{ path('resident_index') }}">Atgal į sąrašą</a>
+        <a class="btn btn-info" href="{{ path('resident_edit', { 'id': resident.id }) }}">Redaguoti</a>
+        <input class="btn btn-danger" type="submit" value="Trinti">
+    </div>
+    {{ form_end(delete_form) }}
+
+{% endblock %}

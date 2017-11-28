@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gyventojų sąrašas</h1>
+
+    {% if app.session.flashBag.has('success') %}
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('success') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% include('resident/filters.html.twig') %}
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{{ knp_pagination_sortable(residents, 'id', 'r.id') }}</th>
+                    <th>{{ knp_pagination_sortable(residents, 'Gimimo data', 'r.birthday') }}</th>
+                    <th>{{ knp_pagination_sortable(residents, 'Gimimo vieta', 'r.birthcountry') }}</th>
+                    <th>{{ knp_pagination_sortable(residents, 'Lytis', 'r.sex') }}</th>
+                    <th>Šeimos padėtis</th>
+                    <th>Gatvė</th>
+                    <th>Rajonas</th>
+                    <th>{{ knp_pagination_sortable(residents, 'Vaikų skaičius', 'r.children') }}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for resident in residents %}
+                <tr>
+                    <td><a href="{{ path('resident_show', { 'id': resident.id }) }}">{{ resident.id }}</a></td>
+                    <td>{{ resident.birthday }}</td>
+                    <td>{{ resident.birthcountry }}</td>
+                    <td>{{ resident.sex }}</td>
+                    <td>{{ resident.maritalStatus }}</td>
+                    <td>{{ resident.street.name }}</td>
+                    <td>{{ resident.street.district }}</td>
+                    <td>{{ resident.children }}</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-default btn-sm" href="{{ path('resident_show', { 'id': resident.id }) }}">Peržiūrėti</a>
+                            <a class="btn btn-info btn-sm" href="{{ path('resident_edit', { 'id': resident.id }) }}">Redguoti</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="navigation text-center">
+        {{ knp_pagination_render(residents) }}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta http-equiv="Cache-control" content="private" />
+        <meta http-equiv="cache-control" content="max-age=7200" />
+        <meta name="robots" content="all" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="google-site-verification" content="3jUyiZ6uUCXE__DdnEvoc_YkkzhpuFf1cMx9DaFcf_I" />
+        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}" content="max-age=7200"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    </head>
+    <body>
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+        <script src="{{ asset('js/javascript.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

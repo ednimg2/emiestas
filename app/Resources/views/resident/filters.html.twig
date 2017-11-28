@@ -1,0 +1,24 @@
+<div class="filters">
+    <h2>Filtras</h2>
+    <form novalidate action="{{ path(filter_apply) }}" method="GET">
+        <input type="hidden" name="filter_id" value="{{ filter_id }}"/>
+        <div class="row">
+            <div class="col-md-2">
+                <input class="form-control" type="text" name='birthday' value="{{filters.birthday | default('')}}" placeholder="Gimimo data">
+            </div>
+            <div class="col-md-2">
+                <input type="hidden" name="street_id" id="street_id" value="{{ filters.street_id | default('') }}">
+                <input id="search_street" class="form-control" type="text" name='street' value="{{ filters.street | default('') }}" placeholder="Gatvė">
+            </div>
+            <div class="col-md-1">
+                <input class='btn btn-info' type='submit' value="Filtruoti" />
+            </div>
+            <div class="col-md-1">
+                <a class='btn btn-danger' href="{{path(filter_clear)}}">Išvalyti filtrą</a>
+            </div>
+            <div class="col-md-1 col-md-offset-4">
+                <a class="btn btn-primary" href="{{ path('resident_new') }}">Pridėti nauja gyventoją</a>
+            </div>
+        </div>
+    </form>
+</div>

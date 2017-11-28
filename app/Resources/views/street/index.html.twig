@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Streets list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>District</th>
+                <th>Districtnumber</th>
+                <th>Terrejcode</th>
+                <th>Streetcode</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for street in streets %}
+            <tr>
+                <td>{{ street.id }}</td>
+                <td>{{ street.name }}</td>
+                <td>{{ street.district }}</td>
+                <td>{{ street.districtNumber }}</td>
+                <td>{{ street.terRejCode }}</td>
+                <td>{{ street.streetCode }}</td>
+                <td>
+                    <ul>
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

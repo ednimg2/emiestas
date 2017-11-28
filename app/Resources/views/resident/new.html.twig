@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pridėti nauja gyventoją</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-success" type="submit" value="Saugoti" />
+    {{ form_end(form) }}
+    <br>
+    <a class="btn btn-default" href="{{ path('resident_index') }}">Atgal į sąrašą</a>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Redaguoti gyventoją</h1>
+            {% if app.session.flashBag.has('success') %}
+                <div class="alert alert-success">
+                    {% for msg in app.session.flashBag.get('success') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <input type="submit" value="Saugoti" class="btn btn-success" />
+            {{ form_end(edit_form) }}
+
+            <br><br>
+            {{ form_start(delete_form) }}
+            <div class="btn-group" role="group">
+                    <a class="btn btn-default" href="{{ path('resident_index') }}">Atgal į sąrašą</a>
+                    <input type="submit" value="Trint" class="btn btn-danger">
+            </div>
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+{% endblock %}
