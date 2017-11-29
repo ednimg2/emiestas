@@ -34,13 +34,7 @@ class StreetController extends Controller
 
         $search_query = $request->query->get('q');
         if(strlen($search_query) >= 3) {
-            $query = $em->createQueryBuilder('s')
-                ->where('s.name LIKE :streetName')
-                ->setParameter('streetName', "%{$search_query}%")
-                ->orderBy('s.name', 'ASC')
-                ->getQuery();
-
-            $streets = $query->getResult();
+            $streets = $em->findStreetBySearchQuery($search_query);
         }
 
         $encoders = array(new XmlEncoder(), new JsonEncoder());
