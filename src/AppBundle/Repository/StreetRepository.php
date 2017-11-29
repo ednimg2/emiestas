@@ -10,4 +10,5 @@ namespace AppBundle\Repository;
  */
 class StreetRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }
